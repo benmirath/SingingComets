@@ -1,6 +1,6 @@
 //
 //  player.h
-//  CCLab_Final_MusicalComets
+//  SingingComets
 //
 //  Created by Ben Miller on 11/17/14.
 //
@@ -12,7 +12,6 @@
 #include "playerShot.h"
 
 class Player : public MusicEntity {
-//class Player {
 
 public:
     Player ();
@@ -22,10 +21,9 @@ public:
     float maxSpeed;
     bool alive;
     void shoot (vector<PlayerShot>& SHOTS);
-//    void shoot (ofApp app);
     void checkBoost ();
     void update ();
     void render ();
     void accelerate ();
-    
+    double returnVoice();
 };

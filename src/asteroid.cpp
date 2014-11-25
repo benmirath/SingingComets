@@ -1,14 +1,12 @@
 //
 //  asteroid.cpp
-//  CCLab_Final_MusicalComets
+//  SingingComets
 //
 //  Created by Ben Miller on 11/17/14.
 //
 //
 
-//#include "ofApp.h"
 #include "musicEntity.h"
-//#include "playerShot.h"
 #include "asteroid.h"
 
 Asteroid::Asteroid (float X, float Y, float V, int T, float A, float R) {
@@ -29,7 +27,6 @@ Asteroid::Asteroid (float X, float Y, float V, int T, float A, float R) {
     } else if (type == 3) {
         w = ofRandom (15, 25);
     }
-    
 }
 Asteroid::~Asteroid () {
     
@@ -42,12 +39,11 @@ void Asteroid::render() {
     ofNoFill ();
     
     ofSetColor (200, 255, 255, 180);
-//    ofRotate (rotation);
     ofEllipse (0, 0, w, w);
     ofPopMatrix ();
 }
 
-void Asteroid::shotCollision(vector<Asteroid>& asteroids, vector<PlayerShot>& shots, int asteroidIndex, int shotIndex) {
+void Asteroid::shotCollision(vector<Asteroid>& asteroids, vector<PlayerShot>& shots, int asteroidIndex, int shotIndex, double& explosionSound) {
     Asteroid asteroid = asteroids[asteroidIndex];
     PlayerShot shot = shots[shotIndex];
     
@@ -64,17 +60,31 @@ void Asteroid::shotCollision(vector<Asteroid>& asteroids, vector<PlayerShot>& sh
             asteroids.push_back(Asteroid (pos.x + ofRandom(-5, 5), pos.y + ofRandom(-5, 5), asteroid.velocity + ofRandom(2), 3, ofRandom(359), 0));
         }
         asteroids.erase(asteroids.begin() + asteroidIndex);
+        explosionSound = 0;
         
     }
 }
 
 void Asteroid::playerCollision(Player& player, Asteroid& asteroid) {
     if (ofDist(pos.x, pos.y, player.pos.x, player.pos.y) < w/2 + 5) {
-        cout << "HIT" << endl;
-//        fill (200, 255, 255, 180);
         ofSetColor(200, 255, 255, 180);
         ofEllipse (player.pos.x, player.pos.y, 100, 100);
         player.alive = false;
     }
+}
+
+double Asteroid::returnVoice() {
+    double returnVal = pos.y;
+    if (type == 0) {
+        returnVal = returnVal / 4;
+    } else if (type == 1) {
+        returnVal = returnVal / 3;
+    } else if (type == 2) {
+        returnVal = returnVal / 2;
+    } else if (type == 3) {
+        returnVal = returnVal;
+    }
+
+    return voice.coswave(abs(returnVal));
 
 }

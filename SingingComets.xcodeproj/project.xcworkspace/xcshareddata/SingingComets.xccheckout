@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>94FB4708-0020-412A-B592-930E3C882F3B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SingingComets</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>445AE48E62AAE6A946D5E9E1D54205C7C830A7CD</key>
+		<string>https://github.com/benmirath/SingingComets.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SingingComets.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>445AE48E62AAE6A946D5E9E1D54205C7C830A7CD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/benmirath/SingingComets.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>445AE48E62AAE6A946D5E9E1D54205C7C830A7CD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>445AE48E62AAE6A946D5E9E1D54205C7C830A7CD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SingingComets</string>
+		</dict>
+	</array>
+</dict>
+</plist>

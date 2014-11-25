@@ -1,5 +1,4 @@
 #include "ofApp.h"
-//#include <Poco/Path.h>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -19,16 +18,36 @@ void ofApp::setup(){
     ofHideCursor();
     restart();
     
+    sampleRate 			= 44100; /* Sampling Rate */
+    initialBufferSize	= 512;	/* Buffer Size. you have to fill this buffer with sound*/
+    
+    laser.load(ofToDataPath("Laser.wav"));
+    laser.getLength();
+    laser.position = laser.length;
+    explosion.load(ofToDataPath("Explosion.wav"));
+    explosion.getLength();
+    explosion.position = explosion.length;
+    voice1.load(ofToDataPath("Voice.wav"));
+    voice1.getLength();
+    voice1.position = voice1.length;
+    voice2.load(ofToDataPath("Voice2.wav"));
+    voice2.getLength();
+    voice2.position = voice2.length;
+    voice3.load(ofToDataPath("Voice3.wav"));
+    voice3.getLength();
+    voice3.position = voice3.length;
+    ofSoundStreamSetup(2,0,this, sampleRate, initialBufferSize, 4);/* Call this last ! */
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    core.update();
-    
     if (keysPressed[357] == true) ship.accelerate();
     if (keysPressed[356] == true) ship.rotation -= .1;
     if (keysPressed[358] == true) ship.rotation += .1;
-    if (keysPressed[32] == true) ship.shoot(shots);
+    if (keysPressed[32] == true && ship.shotTimer == 0) {
+        ship.shoot(shots);
+        laser.position = 0;
+    }
     
     if (ship.alive) {
         ship.update();
@@ -46,7 +65,15 @@ void ofApp::update(){
             asteroids.at(i).update();
             if (ship.alive) asteroids.at(i).playerCollision(ship, asteroids.at(i));
             for (int j = 0; j < shots.size(); j++) {
-                asteroids.at(i).shotCollision (asteroids, shots, i, j);
+                if (asteroids.at(i).type == 0) {
+                    asteroids.at(i).shotCollision (asteroids, shots, i, j, voice1.position);
+                } else if (asteroids.at(i).type == 1) {
+                    asteroids.at(i).shotCollision (asteroids, shots, i, j, voice2.position);
+                } else if (asteroids.at(i).type == 2) {
+                    asteroids.at(i).shotCollision (asteroids, shots, i, j, voice3.position);
+                } else if (asteroids.at(i).type == 3) {
+                    asteroids.at(i).shotCollision (asteroids, shots, i, j, explosion.position);
+                }
             }
         }
         catch (out_of_range) {
@@ -97,14 +124,22 @@ void ofApp::restart() {
     
     asteroidCount = ofRandom(asteroidCountMin, asteroidCountMax);
     for (int i = 0; i < asteroidCount; i++) {
-        asteroids.push_back(Asteroid(ofRandom (50, ofGetWidth() - 50), ofRandom(50, ofGetHeight() - 50), ofRandom(1, 3), 0, ofRandom(359), 0));
+        asteroids.push_back(
+            Asteroid(
+                ofRandom (50, ofGetWidth() - 50),
+                ofRandom(50, ofGetHeight() - 50),
+                ofRandom(1, 3),
+                0,
+                ofRandom(359),
+                0
+            )
+        );
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     keysPressed[key] = true;
-    cout << key << endl;
 }
 
 //--------------------------------------------------------------
@@ -150,27 +185,25 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::audioRequested 	(float * output, int bufferSize, int nChannels){
     
     for (int i = 0; i < bufferSize; i++){
+        sample = 0;
+        wave = 0;
+        wave += ship.returnVoice();
+        for (int i = 0; i < asteroids.size(); i++){
+            try {
+                wave += asteroids.at(i).returnVoice();
+            } catch (out_of_range) {
+                continue;
+            }
+            
+        }
         
-        /* Stick your maximilian 'play()' code in here ! Declare your objects in testApp.h.
-         
-         For information on how maximilian works, take a look at the example code at
-         
-         http://www.maximilian.strangeloop.co.uk
-         
-         under 'Tutorials'.
-         
-         */
-        
-        
-        
-        sample=beat.play(0.25, 0, beat.length);
-        
-        wave=sine1.sinebuf(abs(mouseX));/* mouse controls sinewave pitch. we get abs value to stop it dropping
-                                         //										 delow zero and killing the soundcard*/
-        
-        mymix.stereo(sample + wave, outputs, 0.5);
-        
-        
+        sample += laser.playOnce();
+        sample += explosion.playOnce();
+        sample += voice1.playOnce();
+        sample += voice2.playOnce();
+        sample += voice3.playOnce();
+            
+        mymix.stereo(wave + sample, outputs, 0.5);
         output[i*nChannels    ] = outputs[0]; /* You may end up with lots of outputs. add them here */
         output[i*nChannels + 1] = outputs[1];
     }

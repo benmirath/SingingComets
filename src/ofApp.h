@@ -13,6 +13,7 @@ public:
     void setup();
     void update();
     void draw();
+    void restart ();
     
     void keyPressed(int key);
     void keyReleased(int key);
@@ -26,30 +27,33 @@ public:
     void audioRequested 	(float * input, int bufferSize, int nChannels); /* output method */
     void audioReceived 	(float * input, int bufferSize, int nChannels); /* input method */
     
+    //GAMEPLAY
     bool keysPressed[400];
-    
-    int asteroidCount;
-    int asteroidCountMin;
-    int asteroidCountMax;
+    int
+        asteroidCount,
+        asteroidCountMin,
+        asteroidCountMax;
 
     Player ship;
     vector<PlayerShot> shots;
     vector<Asteroid> asteroids;
-    void restart ();
-    
+
+    //AUDIO
     int	initialBufferSize; /* buffer size */
     int	sampleRate;
     double
         wave,
         sample,
         outputs[2];
+    vector<double> myOutputs;
     
     ofxMaxiMix mymix;
     ofxMaxiOsc sine1;
     ofxMaxiSample
-        beats,
-        beat;
-
-    
+        laser,
+        explosion,
+        voice1,
+        voice2,
+        voice3;
     
 };

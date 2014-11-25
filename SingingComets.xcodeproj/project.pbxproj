@@ -89,6 +89,7 @@
 		D674CEB01A230B7C007DB19B /* maxiMFCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D674CEA31A230B7C007DB19B /* maxiMFCC.cpp */; };
 		D674CEB11A230B7C007DB19B /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D674CEA51A230B7C007DB19B /* maximilian.cpp */; };
 		D674CEB21A230B7C007DB19B /* stb_vorbis.c in Sources */ = {isa = PBXBuildFile; fileRef = D674CEA81A230B7C007DB19B /* stb_vorbis.c */; };
+		D6ED00E31A24C22800D5DCF6 /* tempoBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6ED00E11A24C22800D5DCF6 /* tempoBar.cpp */; };
 		D8AFCED92D5514E8580A4ABC /* x_libpdreceive.c in Sources */ = {isa = PBXBuildFile; fileRef = 524BC63EACFB3776086FD775 /* x_libpdreceive.c */; };
 		D9AB994BC2BD19C9DBF8AD04 /* d_resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 59F628DE75E715DA81DABB03 /* d_resample.c */; };
 		DBC6A9793CEA79C41570A743 /* d_misc.c in Sources */ = {isa = PBXBuildFile; fileRef = CE2B6BAF505C3182CCE624E9 /* d_misc.c */; };
@@ -260,6 +261,8 @@
 		D674CEA81A230B7C007DB19B /* stb_vorbis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_vorbis.c; sourceTree = "<group>"; };
 		D674CEA91A230B7C007DB19B /* stb_vorbis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_vorbis.h; sourceTree = "<group>"; };
 		D674CEAB1A230B7C007DB19B /* ofxMaxim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMaxim.h; sourceTree = "<group>"; };
+		D6ED00E11A24C22800D5DCF6 /* tempoBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tempoBar.cpp; sourceTree = "<group>"; };
+		D6ED00E21A24C22800D5DCF6 /* tempoBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tempoBar.h; sourceTree = "<group>"; };
 		D97E3DFCF296D060DA07EA28 /* g_vslider.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = g_vslider.c; path = "../../../addons/ofxPd/libs/libpd/pure-data/src/g_vslider.c"; sourceTree = SOURCE_ROOT; };
 		DC0D9EDA99DA7C6B6A1510BF /* g_mycanvas.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = g_mycanvas.c; path = "../../../addons/ofxPd/libs/libpd/pure-data/src/g_mycanvas.c"; sourceTree = SOURCE_ROOT; };
 		E0A7F4D96739AAA8844FBEA0 /* d_ugen.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = d_ugen.c; path = "../../../addons/ofxPd/libs/libpd/pure-data/src/d_ugen.c"; sourceTree = SOURCE_ROOT; };
@@ -711,6 +714,8 @@
 				D6469F551A2248FF0024803D /* playerShot.cpp */,
 				D6469F4D1A2248FF0024803D /* asteroid.h */,
 				D6469F4C1A2248FF0024803D /* asteroid.cpp */,
+				D6ED00E21A24C22800D5DCF6 /* tempoBar.h */,
+				D6ED00E11A24C22800D5DCF6 /* tempoBar.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -824,6 +829,7 @@
 				717BB86366F08623F5524BDF /* loop~.c in Sources */,
 				1EC960D751D8E0563978C717 /* lrshift~.c in Sources */,
 				D21112A27514DAD7FEBE0E37 /* pdsched.c in Sources */,
+				D6ED00E31A24C22800D5DCF6 /* tempoBar.cpp in Sources */,
 				C80E76F000452DD006C31F3D /* pd~.c in Sources */,
 				36F094871BCE984210F47203 /* pique.c in Sources */,
 				BB92459348E8496D144518C0 /* sigmund~.c in Sources */,

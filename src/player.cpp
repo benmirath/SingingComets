@@ -1,6 +1,6 @@
 //
 //  player.cpp
-//  CCLab_Final_MusicalComets
+//  SingingComets
 //
 //  Created by Ben Miller on 11/17/14.
 //
@@ -16,7 +16,7 @@ Player::Player () {
     pos.x = ofGetWidth()/2;
     pos.y = ofGetHeight()/2;
     rotation = 0;
-    shotRate = 5;
+    shotRate = 10;
     shotTimer = 0;
     maxSpeed = 10;
     alive = true;
@@ -35,14 +35,9 @@ Player::Player (float x, float y) {
 void Player::shoot(vector<PlayerShot>& SHOTS) {
     if (shotTimer == 0) {
         shotTimer = shotRate;
-        //    snd_shoot.play();
-        //    snd_shoot.rewind();
-
         SHOTS.push_back(PlayerShot(pos.x, pos.y, rotation + PI/2, 10, rotation + PI/2));
         cout << "FIRE!" << endl;
-
     }
-    
 }
 
 void Player::accelerate() {
@@ -66,9 +61,11 @@ void Player::render() {
     ofTranslate(pos.x, pos.y);
     ofRotate(ofRadToDeg(rotation));
     ofNoFill();
-    
-    //setStroke equivalent
-    
     ofTriangle(0, 12, 8, -8, -8, -8);
     ofPopMatrix();
+}
+double Player::returnVoice() {
+    double val = 0;
+    val = ofMap(velocity, 0, maxSpeed, 0, ofGetHeight() / 2);
+    return voice.triangle(abs(val));
 }

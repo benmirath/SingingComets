@@ -1,6 +1,6 @@
 //
 //  playerShot.cpp
-//  CCLab_Final_MusicalComets
+//  SingingComets
 //
 //  Created by Ben Miller on 11/17/14.
 //
