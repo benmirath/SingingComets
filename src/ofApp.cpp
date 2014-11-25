@@ -3,7 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     //VISUALS
-    ofSetWindowShape(1000, 800);
+    ofSetFullscreen(true);
+//    ofSetWindowShape(1000, 800);
     ofSetFrameRate(30);
     ofBackground(0);
     ofEnableAlphaBlending();
